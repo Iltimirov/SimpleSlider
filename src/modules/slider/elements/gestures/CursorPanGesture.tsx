@@ -14,19 +14,14 @@ import {CURSOR_WIDTH, SCREEN_WIDTH} from '../../constants'
 
 type Props = {
   translateX: Animated.SharedValue<number>
-  showTooltip: Animated.SharedValue<boolean>
 }
 
-export const CursorPanGesture: React.FC<Props> = ({
-  translateX,
-  showTooltip,
-}) => {
+export const CursorPanGesture: React.FC<Props> = ({translateX}) => {
   const panGestureHandler = useAnimatedGestureHandler<
     PanGestureHandlerGestureEvent,
     {startX: number}
   >({
     onStart: (_, ctx) => {
-      showTooltip.value = true
       ctx.startX = translateX.value
     },
     onActive: (event, ctx) => {
@@ -35,9 +30,6 @@ export const CursorPanGesture: React.FC<Props> = ({
         0,
         SCREEN_WIDTH - CURSOR_WIDTH,
       )
-    },
-    onEnd: () => {
-      showTooltip.value = false
     },
   })
 

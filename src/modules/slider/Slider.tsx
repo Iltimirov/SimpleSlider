@@ -16,16 +16,10 @@ export const Slider: React.FC<Props> = ({min, max, step, value}) => {
   const translateX = useTranslateX(min, max, value)
   useUpdateValue(min, max, step, translateX, value)
 
-  const showTooltip = useSharedValue(false)
-
   return (
     <SliderContainer>
-      <UIGroup
-        value={value}
-        translateX={translateX}
-        showTooltip={showTooltip}
-      />
-      <GestureGroup translateX={translateX} showTooltip={showTooltip} />
+      <UIGroup translateX={translateX} />
+      <GestureGroup translateX={translateX} />
       <MinMaxLabel min={min} max={max} />
     </SliderContainer>
   )

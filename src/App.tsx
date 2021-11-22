@@ -6,7 +6,7 @@ export const App: React.FC = () => {
   const value = useSharedValue(5)
   return (
     <CenterView>
-      <Slider min={0} max={10} step={1} value={value} />
+      <Slider min={0} max={100} step={1} value={value} />
       <AnimatedText value={value} />
     </CenterView>
   )

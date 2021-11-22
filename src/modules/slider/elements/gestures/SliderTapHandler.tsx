@@ -12,25 +12,14 @@ import {CURSOR_HALF_WIDTH, CURSOR_WIDTH, SLIDER_WIDTH} from '../../constants'
 
 type Props = {
   translateX: Animated.SharedValue<number>
-  showTooltip: Animated.SharedValue<boolean>
 }
 
-export const SliderTapHandler: React.FC<Props> = ({
-  translateX,
-  showTooltip,
-}) => {
+export const SliderTapHandler: React.FC<Props> = ({translateX}) => {
   const tapGestureHandler = (e: TapGestureHandlerStateChangeEvent) => {
     'worklet'
     if (e.nativeEvent.state === State.BEGAN) {
-      showTooltip.value = true
       translateX.value = withTiming(
         clamp(e.nativeEvent.x - CURSOR_HALF_WIDTH, 0, SLIDER_WIDTH),
-        undefined,
-        (isFinished) => {
-          if (isFinished) {
-            showTooltip.value = false
-          }
-        },
       )
     }
   }
