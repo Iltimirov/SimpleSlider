@@ -1,8 +1,13 @@
 import React from 'react'
 import {useSharedValue} from 'react-native-reanimated'
-import {Slider} from './modules'
+import {AnimatedText, CenterView, Slider} from './modules'
 
 export const App: React.FC = () => {
-  const value = useSharedValue(0)
-  return <Slider min={0} max={100} step={10} value={value} />
+  const value = useSharedValue(5)
+  return (
+    <CenterView>
+      <Slider min={0} max={100} step={1} value={value} />
+      <AnimatedText value={value} />
+    </CenterView>
+  )
 }
