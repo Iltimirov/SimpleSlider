@@ -16,10 +16,14 @@ type Props = {
   translateX: Animated.SharedValue<number>
 }
 
+type GestureContext = {
+  startX: number
+}
+
 export const CursorPanGesture: React.FC<Props> = ({translateX}) => {
   const panGestureHandler = useAnimatedGestureHandler<
     PanGestureHandlerGestureEvent,
-    {startX: number}
+    GestureContext
   >({
     onStart: (_, ctx) => {
       ctx.startX = translateX.value
