@@ -1,6 +1,6 @@
 import React from 'react'
-import {Text} from 'react-native'
 import Animated from 'react-native-reanimated'
+import styled from 'styled-components/native'
 
 type Props = {
   min: number
@@ -10,5 +10,10 @@ type Props = {
 }
 
 export const Slider: React.FC<Props> = () => {
-  return <Text>I'm slider</Text>
+  return <Container></Container>
 }
+
+const Container = styled.View({
+  height: 48,
+  paddingTop: 8,
+})
