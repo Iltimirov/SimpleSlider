@@ -18,7 +18,7 @@ export const SliderTapHandler: React.FC<Props> = ({translateX}) => {
   const tapGestureHandler = (e: TapGestureHandlerStateChangeEvent) => {
     'worklet'
     if (e.nativeEvent.state === State.BEGAN) {
-      translateX.value = withTiming(clamp(e.nativeEvent.x, 0, SLIDER_WIDTH))
+      translateX.value = withTiming(e.nativeEvent.x)
     }
   }
   return (
